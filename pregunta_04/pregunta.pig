@@ -28,7 +28,8 @@ $ pig -x local -f pregunta.pig
 
          >>> Escriba su respuesta a partir de este punto <<<
 */
-data = LOAD 'data.csv' USING PigStorage(',') AS (
+data = LOAD 'data.csv' USING PigStorage(',') 
+AS (
 driverId:int,
 truckId:int,
 eventTime:chararray,
@@ -40,8 +41,7 @@ correlationId:long,
 driverName:chararray,
 routeId:long,
 routeName:chararray,
-eventDate:chararray,
-);
+eventDate:chararray);
 cols = FOREACH data GENERATE driverId,truckId,eventTime;
 limit_data = LIMIT cols 10;
 order_by = ORDER limit_data BY driverId ASC, truckId ASC, eventTime ASC;

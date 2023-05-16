@@ -15,6 +15,6 @@ $ pig -x local -f pregunta.pig
 */
 data = LOAD 'data.tsv' AS (letter:chararray,bag_col:BAG{A:tuple(B:chararray)},map_info:map[]);
 data_read = FOREACH data GENERATE flatten(map_info);
-group_by = GROUP data_read by letter;
+group_by = GROUP data_read BY letter;
 counter = FOREACH group_by GENERATE group, COUNT(data_read);
 STORE counter INTO 'output' USING PigStorage(',');

@@ -12,6 +12,6 @@ $ pig -x local -f pregunta.pig
 
      >>> Escriba el codigo del mapper a partir de este punto <<<
 */
-data = LOAD 'data.tsv' AS (Words:charaarray, Date:charaarray, Number; int);
+data = LOAD 'data.tsv' AS (Words:chararray, Date:chararray, Number; int);
 order_by = ORDER data BY Words ASC, Number ASC;
 STORE order_by INTO 'output' USING PigStorage(',');

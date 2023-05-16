@@ -24,8 +24,7 @@ data = LOAD 'data.csv' USING PigStorage(',') AS (
     LastName:CHARARRAY,
     Birth:CHARARRAY,
     Color:CHARARRAY,
-    Value:INT
-);
-birthday = FOREACH data GENERATE REGEX_EXTRACT(Birth,'(.*)-(.*)-(.*)', 2)';
+    Value:INT);
+birthday = FOREACH data GENERATE REGEX_EXTRACT(Birth,'(.*)-(.*)-(.*)', 2);
 STORE birthday INTO 'output' USING PigStorage(',');
 

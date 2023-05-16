@@ -32,4 +32,3 @@ data = LOAD 'data.csv' USING PigStorage(',') AS (
 color_table = FOREACH data GENERATE Color;
 x = FILTER color_table BY Color MATCHES 'b.*';
 STORE x INTO 'output' USING PigStorage(',');
-

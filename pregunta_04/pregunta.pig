@@ -45,4 +45,4 @@ eventDate:chararray,
 cols = FOREACH data GENERATE driverId,truckId,eventTime;
 limit_data = LIMIT cols 10;
 order_by = ORDER limit_data BY driverId ASC, truckId ASC, eventTime ASC;
-STORE order_by INTO 'output' USING PigStorage(',')
+STORE order_by INTO 'output' USING PigStorage(',');

@@ -25,8 +25,7 @@ data = LOAD 'data.csv' USING PigStorage(',') AS (
     LastName:CHARARRAY,
     Birth:CHARARRAY,
     Color:CHARARRAY,
-    Value:INT
-);
+    Value:INT);
 data_2 = FOREACH data GENERATE Name, Color;
-x = FILTER data_2 BY Color IN ('blue','black');
-STORE x INTO 'output' USING PigStorage(',');
+variable = FILTER data_2 BY Color IN ('blue','black');
+STORE variable INTO 'output' USING PigStorage(',');

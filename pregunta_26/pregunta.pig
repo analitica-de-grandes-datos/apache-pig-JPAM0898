@@ -18,16 +18,16 @@ evaluación, pig sera eejcutado ejecutado en modo local:
 
 $ pig -x local -f pregunta.pig
 
-        >>> Escriba su respuesta a partir de este punto <<<
+>>> Escriba su respuesta a partir de este punto <<<
 */
-data = LOAD 'data.csv' USING PigStorage(',') 
-AS (
+data = LOAD 'data.csv' USING PigStorage(',') AS (
     Id:int,
     Name:chararray,
     LastName:chararray,
     Birth:chararray,
-    color:chararray,
-    value:int
+    Color:chararray,
+    Value:int
 );
-birthday = FOREACH data GENERATE ((SUBSTRING(Name,0,1))>='M');
-STORE birthday INTO 'output' USING PigStorage(',');
+s_data = FOREACH data GENERATE Name;
+f_data = FILTER s_data BY ((SUBSTRING(Name,0,1))>='M');
+STORE f_data INTO 'output' USING PigStorage(',');
